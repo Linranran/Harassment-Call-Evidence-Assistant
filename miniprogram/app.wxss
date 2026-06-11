@@ -1,0 +1,150 @@
+page {
+  background: #f6f7f9;
+  color: #17202a;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 28rpx;
+}
+
+view,
+text,
+button,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 28rpx;
+}
+
+.section {
+  background: #ffffff;
+  border: 1rpx solid #e5e7eb;
+  border-radius: 8rpx;
+  margin-bottom: 24rpx;
+  padding: 28rpx;
+}
+
+.section-title {
+  color: #111827;
+  font-size: 34rpx;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 10rpx;
+}
+
+.section-subtitle {
+  color: #667085;
+  font-size: 26rpx;
+  line-height: 1.55;
+}
+
+.row {
+  align-items: center;
+  display: flex;
+  gap: 16rpx;
+  justify-content: space-between;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.button {
+  align-items: center;
+  border-radius: 8rpx;
+  display: flex;
+  font-size: 28rpx;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1;
+  min-height: 88rpx;
+  padding: 0 28rpx;
+}
+
+.button-primary {
+  background: #0f766e;
+  color: #ffffff;
+}
+
+.button-secondary {
+  background: #e6fffb;
+  color: #0f766e;
+}
+
+.button-ghost {
+  background: #ffffff;
+  border: 1rpx solid #d0d5dd;
+  color: #344054;
+}
+
+.button-danger {
+  background: #fff1f2;
+  color: #be123c;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.label {
+  color: #344054;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.input,
+.textarea,
+.picker-value {
+  background: #ffffff;
+  border: 1rpx solid #d0d5dd;
+  border-radius: 8rpx;
+  color: #111827;
+  min-height: 80rpx;
+  padding: 18rpx 22rpx;
+}
+
+.textarea {
+  line-height: 1.5;
+  min-height: 160rpx;
+  width: 100%;
+}
+
+.muted {
+  color: #667085;
+  font-size: 24rpx;
+}
+
+.tag {
+  background: #f2f4f7;
+  border-radius: 999rpx;
+  color: #344054;
+  display: inline-flex;
+  font-size: 23rpx;
+  padding: 8rpx 16rpx;
+}
+
+.tag-active {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.divider {
+  background: #eaecf0;
+  height: 1rpx;
+  margin: 20rpx 0;
+}
+
+.empty {
+  align-items: center;
+  color: #667085;
+  display: flex;
+  justify-content: center;
+  min-height: 160rpx;
+  text-align: center;
+}

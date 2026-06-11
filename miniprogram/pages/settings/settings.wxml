@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="section">
+    <view class="section-title">设置</view>
+    <view class="section-subtitle">当前版本为本地 MVP，数据优先保存在本机微信环境中。</view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">用户信息</view>
+    <view class="field">
+      <view class="label">本人手机号，可选</view>
+      <input class="input" value="{{userPhone}}" bindinput="updateUserPhone" placeholder="用于投诉文案，可不填" />
+    </view>
+    <view class="field">
+      <view class="label">运营商</view>
+      <picker mode="selector" range="{{carriers}}" bindchange="updateCarrier">
+        <view class="picker-value">{{carrier}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">隐私与边界</view>
+    <view class="notice">本小程序不是 12321、12345、12381 或运营商官方渠道。</view>
+    <view class="notice">第一版只帮助整理材料和生成文案，不会自动代你提交投诉。</view>
+    <view class="notice">提交前请自行核对号码、时间、事实描述和证据材料。</view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">数据管理</view>
+    <view class="section-subtitle">清空后会删除本机保存的骚扰记录、投诉进度和用户设置。</view>
+    <button class="button button-danger" bindtap="clearData">清空本地数据</button>
+  </view>
+</view>

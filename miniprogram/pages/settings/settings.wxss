@@ -1,0 +1,15 @@
+.field {
+  margin-top: 20rpx;
+}
+
+.notice {
+  border-bottom: 1rpx solid #eaecf0;
+  color: #344054;
+  font-size: 26rpx;
+  line-height: 1.55;
+  padding: 16rpx 0;
+}
+
+.notice:last-child {
+  border-bottom: 0;
+}

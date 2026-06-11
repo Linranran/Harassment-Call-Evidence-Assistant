@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/review/review",
+    "pages/draft/draft",
+    "pages/progress/progress",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "navigationBarTitleText": "防骚扰电话证据助手",
+    "navigationBarBackgroundColor": "#0f766e",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f6f7f9"
+  },
+  "tabBar": {
+    "color": "#667085",
+    "selectedColor": "#0f766e",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "取证"
+      },
+      {
+        "pagePath": "pages/draft/draft",
+        "text": "文案"
+      },
+      {
+        "pagePath": "pages/progress/progress",
+        "text": "进度"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "设置"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

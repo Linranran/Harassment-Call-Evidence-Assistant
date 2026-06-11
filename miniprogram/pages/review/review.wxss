@@ -1,0 +1,66 @@
+.field {
+  margin-bottom: 22rpx;
+}
+
+.phone-option {
+  align-items: center;
+  background: #f8fafc;
+  border: 1rpx solid #e5e7eb;
+  border-radius: 8rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18rpx;
+  padding: 18rpx;
+}
+
+.phone-option:last-child {
+  margin-bottom: 0;
+}
+
+.phone-number {
+  color: #111827;
+  font-size: 34rpx;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.note-textarea {
+  min-height: 120rpx;
+}
+
+.type-grid {
+  display: grid;
+  gap: 12rpx;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.type-chip {
+  background: #f8fafc;
+  border: 1rpx solid #d0d5dd;
+  border-radius: 8rpx;
+  color: #344054;
+  font-size: 23rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  margin: 0;
+  padding: 0;
+}
+
+.type-chip-active {
+  background: #0f766e;
+  border-color: #0f766e;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.recording-row {
+  border-top: 1rpx solid #eaecf0;
+  padding-top: 18rpx;
+}
+
+.bottom-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  padding-bottom: 36rpx;
+}

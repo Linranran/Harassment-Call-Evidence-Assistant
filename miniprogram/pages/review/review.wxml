@@ -1,0 +1,85 @@
+<view class="page">
+  <view class="section">
+    <view class="section-title">{{selectionStep ? '选择骚扰号码' : (isEdit ? '编辑骚扰记录' : '补充骚扰信息')}}</view>
+    <view class="section-subtitle">{{selectionStep ? 'OCR 可能识别出多个号码，默认勾选最上方号码。请选择需要投诉的号码。' : '请补充骚扰类型、内容和证据备注，保存后可生成投诉文案。'}}</view>
+  </view>
+
+  <block wx:if="{{selectionStep}}">
+    <view class="section">
+      <view wx:for="{{records}}" wx:key="localId" class="phone-option">
+        <view>
+          <view class="phone-number">{{item.phone || '号码待补充'}}</view>
+          <view class="muted">{{index === 0 ? '默认选择最上方号码' : '确认是骚扰号码时勾选'}}</view>
+        </view>
+        <switch checked="{{item.selected}}" data-index="{{index}}" bindchange="toggleSelected" />
+      </view>
+    </view>
+
+    <view class="bottom-actions">
+      <button class="button button-primary" bindtap="continueToDetails">下一步</button>
+      <button class="button button-ghost" bindtap="manualFromSelection">手动填写</button>
+    </view>
+  </block>
+
+  <block wx:else>
+  <view wx:for="{{records}}" wx:for-item="record" wx:for-index="recordIndex" wx:key="localId" class="section">
+    <view class="field">
+      <view class="label">骚扰号码</view>
+      <input class="input" value="{{record.phone}}" data-index="{{recordIndex}}" data-field="phone" bindinput="updateField" placeholder="例如 0755-2688****" />
+    </view>
+
+    <view class="field">
+      <view class="label">来电时间</view>
+      <input class="input" value="{{record.callTime}}" data-index="{{recordIndex}}" data-field="callTime" bindinput="updateField" placeholder="例如 2026-06-10 14:16" />
+    </view>
+
+    <view class="field">
+      <view class="label">来电状态</view>
+      <input class="input" value="{{record.callType}}" data-index="{{recordIndex}}" data-field="callType" bindinput="updateField" placeholder="未接来电/已接来电" />
+    </view>
+
+    <view class="field">
+      <view class="label">骚扰类型</view>
+      <view class="type-grid">
+        <button
+          wx:for="{{harassmentTypes}}"
+          wx:for-item="type"
+          wx:key="*this"
+          class="type-chip {{record.harassmentType === type ? 'type-chip-active' : ''}}"
+          data-index="{{recordIndex}}"
+          data-type="{{type}}"
+          bindtap="chooseType"
+        >{{type}}</button>
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="label">公司名，可选</view>
+      <input class="input" value="{{record.companyName}}" data-index="{{recordIndex}}" data-field="companyName" bindinput="updateField" placeholder="不知道可留空" />
+    </view>
+
+    <view class="field">
+      <view class="label">骚扰内容</view>
+      <textarea class="textarea" value="{{record.summary}}" data-index="{{recordIndex}}" data-field="summary" bindinput="updateField" placeholder="可选，例如：对方自称贷款/入户/房产中介，未经同意反复拨打" />
+    </view>
+
+    <view class="field">
+      <view class="label">截图备注，可选</view>
+      <textarea class="textarea note-textarea" value="{{record.note}}" data-index="{{recordIndex}}" data-field="note" bindinput="updateField" placeholder="例如：这是通话记录截图最上方号码；同一号码一周内多次拨打" />
+    </view>
+
+    <view class="row recording-row">
+      <view>
+        <view class="label">是否有录音</view>
+        <view class="muted">有录音会提高证据完整度</view>
+      </view>
+      <switch checked="{{record.hasRecording}}" data-index="{{recordIndex}}" bindchange="toggleRecording" />
+    </view>
+  </view>
+
+  <view class="bottom-actions">
+    <button class="button button-primary" bindtap="saveAll">保存记录</button>
+    <button class="button button-ghost" bindtap="addBlank">再添加一条</button>
+  </view>
+  </block>
+</view>

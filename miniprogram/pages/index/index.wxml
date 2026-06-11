@@ -1,0 +1,50 @@
+<view class="page">
+  <view class="tool-panel">
+    <view>
+      <view class="hero-title">防骚扰电话证据助手</view>
+      <view class="hero-subtitle">上传截图，勾选号码，补充类型，生成投诉文案。</view>
+    </view>
+    <view class="stats-row">
+      <view class="stat-item">
+        <view class="stat-number">{{records.length}}</view>
+        <view class="stat-label">已存线索</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-number">{{records.length ? 4 : 0}}</view>
+        <view class="stat-label">可生成文案</view>
+      </view>
+    </view>
+    <view class="actions">
+      <button class="button button-primary" bindtap="chooseImage">上传通话截图</button>
+      <button class="button button-ghost" bindtap="goManual">手动添加号码</button>
+    </view>
+    <button class="text-button" bindtap="useMockOcr">使用模拟识别</button>
+  </view>
+
+  <view class="section">
+    <view class="row">
+      <view>
+        <view class="section-title">已保存记录</view>
+        <view class="section-subtitle">{{records.length}} 条骚扰线索</view>
+      </view>
+      <button class="small-button" bindtap="goDraft">生成文案</button>
+    </view>
+
+    <view wx:if="{{records.length === 0}}" class="empty">暂无记录，先上传一张最近通话截图。</view>
+
+    <view wx:for="{{records}}" wx:key="id" class="record">
+      <view class="row">
+        <view>
+          <view class="record-phone">{{item.phone}}</view>
+          <view class="muted">{{item.callTime || '时间待补充'}} · {{item.callType}}</view>
+        </view>
+        <view class="tag">{{item.harassmentType}}</view>
+      </view>
+      <view class="record-summary">{{item.summary || item.note || '已保存号码，待补充骚扰内容'}}</view>
+      <view class="record-actions">
+        <button class="mini-button" data-id="{{item.id}}" bindtap="editRecord">编辑</button>
+        <button class="mini-button danger" data-id="{{item.id}}" bindtap="deleteRecord">删除</button>
+      </view>
+    </view>
+  </view>
+</view>

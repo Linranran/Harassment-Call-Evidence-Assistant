@@ -1,0 +1,41 @@
+<view class="page">
+  <view class="section">
+    <view class="section-title">投诉进度</view>
+    <view class="section-subtitle">记录提交状态、受理编号和反馈。第一版不自动提交官方平台。</view>
+    <button class="button button-primary" bindtap="addProgress">新增进度</button>
+  </view>
+
+  <view wx:if="{{list.length === 0}}" class="section empty">暂无投诉进度。可以先去“文案”页生成并记录。</view>
+
+  <view wx:for="{{list}}" wx:key="id" class="section">
+    <view class="row">
+      <view>
+        <view class="section-title">{{item.channel}}</view>
+        <view class="section-subtitle">{{item.status}} · {{item.submitTime || '未填写提交时间'}}</view>
+      </view>
+      <button class="delete-button" data-id="{{item.id}}" bindtap="deleteProgress">删除</button>
+    </view>
+
+    <view class="field">
+      <view class="label">状态</view>
+      <picker mode="selector" range="{{statuses}}" data-id="{{item.id}}" bindchange="changeStatus">
+        <view class="picker-value">{{item.status}}</view>
+      </picker>
+    </view>
+
+    <view class="field">
+      <view class="label">提交时间</view>
+      <input class="input" value="{{item.submitTime}}" data-id="{{item.id}}" data-field="submitTime" bindinput="updateProgress" placeholder="例如 2026-06-10" />
+    </view>
+
+    <view class="field">
+      <view class="label">受理编号</view>
+      <input class="input" value="{{item.receiptNo}}" data-id="{{item.id}}" data-field="receiptNo" bindinput="updateProgress" placeholder="没有可留空" />
+    </view>
+
+    <view class="field">
+      <view class="label">反馈备注</view>
+      <textarea class="textarea" value="{{item.note}}" data-id="{{item.id}}" data-field="note" bindinput="updateProgress" placeholder="记录官方反馈或下一步动作" />
+    </view>
+  </view>
+</view>
