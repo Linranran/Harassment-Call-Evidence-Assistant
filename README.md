@@ -2,25 +2,27 @@
 
 这是一个微信小程序 MVP 工程，用于把骚扰电话截图和线索整理成投诉材料。
 
+## 界面预览
+
+![防骚扰电话证据助手界面预览](images/ui-preview.png)
+
 ## 当前功能
 
-- 上传通话截图入口，开发版使用模拟 OCR。
-- 手动添加骚扰号码。
-- 编辑号码、时间、来电状态、骚扰类型、公司名和备注。
+- 上传通话截图并通过 OCR 提取疑似电话号码。
+- 从识别结果中勾选需要保留的号码。
+- 补充来电时间、来电状态、骚扰类型、公司名、备注和录音情况。
 - 生成 12321、运营商、12345、12381 投诉文案。
-- 一键复制投诉文案。
+- 一键复制投诉文案和投诉入口。
 - 保存投诉进度。
 - 清空本地数据。
-- 预留云函数：`ocrRecognize`、`saveRecord`。
+- 微信云函数：`ocrRecognize`、`saveRecord`。
 
 ## 目录结构
 
 - `miniprogram/`：微信小程序前端。
 - `cloudfunctions/`：微信云函数骨架。
 - `scripts/`：本地测试脚本。
-- `开发规划.md`：MVP 范围、职责分工和验收标准。
-- `项目方案.md`：项目方向和商业化分析。
-- `背景.txt`：原始背景材料。
+- `images/`：README 展示截图。
 
 ## 如何运行
 
@@ -29,6 +31,7 @@
 3. 如果还没有正式 AppID，可以先使用测试号或游客模式。
 4. 后续拿到正式 AppID 后，替换 `project.config.json` 里的 `appid`。
 5. 如果开通云开发，把云环境 ID 填入 `miniprogram/app.js` 的 `globalData.envId`。
+6. 部署 `cloudfunctions/ocrRecognize` 后，在云函数环境变量中配置 OCR 密钥。
 
 ## 本地测试
 
@@ -40,9 +43,9 @@ node scripts/test_templates.js
 
 该脚本验证投诉模板和证据评分的基础逻辑。
 
-## 后续接入 OCR
+## OCR 配置
 
-当前 `cloudfunctions/ocrRecognize` 已预留腾讯云 OCR 接入。没有配置云环境时，小程序会自动回退到模拟 OCR。正式接入时：
+当前 `cloudfunctions/ocrRecognize` 使用腾讯云 OCR。没有配置云环境时，小程序会自动回退到模拟 OCR。正式接入时：
 
 1. 开通微信云开发。
 2. 在 `miniprogram/app.js` 中配置云环境 ID。
@@ -52,8 +55,6 @@ node scripts/test_templates.js
 6. 云函数下载图片并调用 OCR。
 7. 将 OCR 文本解析成号码、时间和来电状态。
 8. 返回给小程序确认页。
-
-详细步骤见 [腾讯云OCR配置.md](/Volumes/LRR/dataset/电话防骚扰项目/腾讯云OCR配置.md)。
 
 ## 密钥安全
 
