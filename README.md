@@ -4,7 +4,7 @@
 
 ## 界面预览
 
-![防骚扰电话证据助手界面预览](images/ui-preview.png)
+<img src="images/ui-preview.png" alt="防骚扰电话证据助手界面预览" width="420">
 
 ## 当前功能
 
